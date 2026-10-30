@@ -19,7 +19,7 @@ Enjoy!@#
 /*------------------------------------------------------------------------*/
 
 define("LIVE_LOCATION","/live"); // define this to "" if you dont put it in a subdirectory like '/live' (default) but in '/' for example.
-define("IFACE_URL","http://127.0.0.1/live/"); // The GUI main URL (the one to access it), this value affect the eventual REFERER checks
+define("IFACE_URL","http://192.168.254.106/gnuworld"); // The GUI main URL (the one to access it), this value affect the eventual REFERER checks
 define("SERVICE_CHANNEL","#cservice"); // The CService Official Channel
 
 /* NOTE: to FORGE reply adresses, user 'nobody' needs a 'Tnobody' line added in /etc/sendmail.cf (or equiv.) */
@@ -46,17 +46,17 @@ define("TOASTER_FROM_MAIL","toaster@yournetwork.org");
 /* LOCAL DATABASE DEFINITIONS */
 /******************************/
 define("LOCALDB_NAME", getenv("LOCALDB_NAME") ?: "local_db"); // the local database that contains the gnuworld/doc/local_db.sql information.
-define("LOCALDB_USER", getenv("LOCALDB_USER") ?: ""); // the local user that has full access to LOCALDB_NAME.
-define("LOCALDB_PASS", getenv("LOCALDB_PASS") ?: ""); // the password, use blank if you dont use passwords.
+define("LOCALDB_USER", getenv("LOCALDB_USER") ?: "gnuworld"); // the local user that has full access to LOCALDB_NAME.
+define("LOCALDB_PASS", getenv("LOCALDB_PASS") ?: "fuckoff"); // the password, use blank if you dont use passwords.
 define("LOCALDB_HOST", getenv("LOCALDB_HOST") ?: "127.0.0.1"); // the local database ip or hostname
 
 /*******************************/
 /* REMOTE DATABASE DEFINITIONS */
 /*******************************/
-define("REMOTEDB_NAME", getenv("REMOTEDB_NAME") ?: ""); // the remote database that contains cservice.sql, cservice.web.sql information.
-define("REMOTEDB_USER", getenv("REMOTEDB_USER") ?: ""); // the user that has access remotely to that db
-define("REMOTEDB_PASS", getenv("REMOTEDB_PASS") ?: ""); // the password, use blank if you dont use passwords.
-define("REMOTEDB_HOST", getenv("REMOTEDB_HOST") ?: ""); // the remote database ip or hostname
+define("REMOTEDB_NAME", getenv("REMOTEDB_NAME") ?: "cservice"); // the remote database that contains cservice.sql, cservice.web.sql information.
+define("REMOTEDB_USER", getenv("REMOTEDB_USER") ?: "gnuworld"); // the user that has access remotely to that db
+define("REMOTEDB_PASS", getenv("REMOTEDB_PASS") ?: "fuckoff"); // the password, use blank if you dont use passwords.
+define("REMOTEDB_HOST", getenv("REMOTEDB_HOST") ?: "127.0.0.1"); // the remote database ip or hostname
 define("REMOTEDB_PORT", 5432);
 
 
@@ -65,7 +65,7 @@ define("REMOTEDB_PORT", 5432);
 /*******************************/
 define("HOSTING_LOGO",""); // this image should go in website/docs/gnuworld/images and be maximum 250*33 pixels.
 define("HOSTING_URL","");
-define("HOSTING_STATS", 1); // 1: enable, 0: disable. If you enabled this you *NEED* to ensure that a file
+define("HOSTING_STATS",0); // 1: enable, 0: disable. If you enabled this you *NEED* to ensure that a file
              			 // called 'hosting_stats' is WRITABLE by the httpd user in /tmp.
 			             //
                			 // This option enables/disables the page access to 901+ on the web as well.
@@ -113,7 +113,7 @@ define("CRC_SALT_EXT5","1234");
     it will automatically redirect accesses to "LOCALMIRROR".
 */
 define("ADMINONLY_MIRROR",0); // Define this to 1 if you want that only * person can login.
-define("CLIENT_MIRROR_URL","https://cservice.yournetwork.org/live/"); // define this in case ADMINONLY_MIRROR is set to 1.
+define("CLIENT_MIRROR_URL","http://192.168.254.106/gnuworld/"); // define this in case ADMINONLY_MIRROR is set to 1.
 define("LOCALMIRROR","cservice-live.xx.yournetwork.org");
 define("ROUNDROBIN","cservice-live.yournetwork.org");
 
@@ -130,7 +130,7 @@ define("AUTO_SWITCH_THEMES",0); // If you set this .. dated themes will appear w
 /* VARIOUS CHECK OPTIONS */
 /*************************/
 define("ENABLE_REGISTER_GLOBALS", getenv("ENABLE_REGISTER_GLOBALS") ?: 1); // enable "fake" register globals function when using PHP >= 5.4
-define("ENABLE_NOTES",0); // set this to 1 to enable or 0 to disable the "Notes" link on the web
+define("ENABLE_NOTES",1); // set this to 1 to enable or 0 to disable the "Notes" link on the web
                         // you *NEED* to have your X (mod.cservice) bot running with the code
                			// supporting it to enable this, check out 'gnuworld/doc/notes.sql' too.
 define("NOTES_ADMIN_ONLY",1); // This applies if 'ENABLE_NOTES' is set to 1, when set to 0, everyone can use the feature
@@ -142,7 +142,7 @@ define("NOTES_LIM_INBOX",15); // Total number of notes a user can have in his 'n
 
 define("COOKIE_DOMAIN",""); // Blank:default. Define this to ".yourdomain.com" or anything else at your own risks ;P
 
-define("BOFH_PASS_ADMIN",1); // set this to 0 to disable password complexity checking for * people.
+define("BOFH_PASS_ADMIN",0); // set this to 0 to disable password complexity checking for * people.
 define("BOFH_PASS_USER",0); // set this to 1 to enable password complexity checking for all users (overriding BOFH_PASS_ADMIN=0).
 define("PW_MIN_CHARS",6); // minimum chars a password must contain.
 define("PW_MIN_CAPSL",1); // minimum upper case letters a password must contain.
@@ -150,7 +150,7 @@ define("PW_MIN_MINSL",1); // minimum lower case letters a password must contain.
 define("PW_MIN_DIGIT",1); // minimum digits a password must contain.
 define("PW_MIN_OTHER",1); // minimum other chars a password must contain.
 
-define("IPCHK_MAXHITS",5); // Number of failed forgotten_pass/login attempts before IP_LOCK
+define("IPCHK_MAXHITS",3); // Number of failed forgotten_pass/login attempts before IP_LOCK
 
 define("IPCHK_BANTIME",86400); // Time your IP/username is locked (seconds) when caught into IPCHK_MAXHITS+ failed attempts.
 define("ACL_FOR_ANY",1); // set this to 1 if you want to be able to set and use ACLs for users that are not added to '*'.
@@ -158,46 +158,46 @@ define("IPR_REQUIRED",0); // set this to 1 if you want * and ACL'd people to REQ
               			// to be able to log in. (for more security, we recommend you set this to 1 after the IP restriction
 			            // has been defined at least on yourself).
 
-define("ENABLE_COMPLAINTS_MODULE",1); // set this to 0 to disable , 1 to enable, the /complaints reporting module (for example if you dont use it ;P)
+define("ENABLE_COMPLAINTS_MODULE",0); // set this to 0 to disable , 1 to enable, the /complaints reporting module (for example if you dont use it ;P)
 define("COMPLAINTS_ADMINCOMMENT_ID",1); // this is *MUST* be set to a PERMANENTLY VALID USERNAME ID, if COMPLAINTS MODULE is enabled.
 				                      // this will be the user that will post the anonymous objections under the form of an admin comment
 				                      // when a complaint of this type is sent.
 
-define("CONFIRM_STAR_PWRESET",	0);	// if set to 1, it will require CONFIRM_STAR_PWRESET_MAIL to confirm all requests.
-define("CONFIRM_STAR_PWRESET_MAIL", ''); // must contain a valid email if CONFIRM_STAR_PWRESET is set to 1.
-define("LOCK_ON_PWCHG",		0);	// if set to 1, will LOCK OUT the * account pending a password change (CONFIRM_STAR_PWRESET*)
-define("LOCK_PWCHG_LEVEL",	0);	// set this to 0 to disable, if set to a level (1-1000), people added on * with that level or above
+define("CONFIRM_STAR_PWRESET",0);	// if set to 1, it will require CONFIRM_STAR_PWRESET_MAIL to confirm all requests.
+define("CONFIRM_STAR_PWRESET_MAIL",''); // must contain a valid email if CONFIRM_STAR_PWRESET is set to 1.
+define("LOCK_ON_PWCHG",0); // if set to 1, will LOCK OUT the * account pending a password change (CONFIRM_STAR_PWRESET*)
+define("LOCK_PWCHG_LEVEL",0); // set this to 0 to disable, if set to a level (1-1000), people added on * with that level or above
 					            // will not be able to change their passwords with the system (requires manual DB modification, or modification of this value)
 					            // suggested value would be 901 (coder level).
-define("LOCK_STAR_MAILEDIT",	0);	// if set to 1, it will enable the feature preventing * users to modify email in another * account unless the editor has
+define("LOCK_STAR_MAILEDIT",0);	// if set to 1, it will enable the feature preventing * users to modify email in another * account unless the editor has
 					            // a level of at least *800
 
 define("NEWUSERS_GFXCHECK",1);				// 1 = add a graphical code entry check to "newusers", 0 = disable the feature (or if no "libgd" is present)
-define("FONT_PATH","...");	// ABSOLUTE PATH to the 'website/fonts/' directory (normally "/home/gnuworld/website/fonts/")
+define("FONT_PATH","/home/gnuworld/cservice-web/fonts/");	// ABSOLUTE PATH to the 'website/fonts/' directory (normally "/home/gnuworld/website/fonts/")
 define("SPECIFIC_FONT","rans.ttf");			// if you let this empty, fonts will be randomly chosen into FONT_PATH (one single font used per code/image).
 define("JPEG_OUT_QUALITY",60);				// %Quality of the JPEG generated (the less you put this, the harder it will be to read/recognize, ranges 1 to 100).
 
 define("NEWUSERS_IPCHECK",1); // define this to 1, if you want to enable ONE IP = ONE USERNAME per 24h.
 define("REMEMBER_LOGIN",1); // set either to 1, or 0 to enable, or disable "username pre-fill" in the LOGIN page(s).
 define("PREFILL_NOTICE",1); // Display (1) or not (1) a notice about the "username pre-fill" and how it helps you know you're on the good page.
-define("DISALLOW_RESERVED_BLOCKS",1); // define this to 1 if you want to disable access to the website to IANA reserved blocks (10.*, 192.168.*, etc.), 0 to disable check.
+define("DISALLOW_RESERVED_BLOCKS",0); // define this to 1 if you want to disable access to the website to IANA reserved blocks (10.*, 192.168.*, etc.), 0 to disable check.
 
-define("LREQ_TIME",600); // min time between forgotten password requests to avoid flooding, set this to 0 to disable.
+define("LREQ_TIME",0); // min time between forgotten password requests to avoid flooding, set this to 0 to disable.
 
-define("REGPROC_IDLECHECK",1); // If this is set to 1, users that are idle more than 21 days will not be allowed to
+define("REGPROC_IDLECHECK",0); // If this is set to 1, users that are idle more than 21 days will not be allowed to
 			     // register a channel or be a channel supporter until they login to the bot on IRC.
 
 define("REGPROC_ALLOWMULTIPLE",0); // If this is set to 1, users will be allowed to register an unlimited amount
 				                 // of channels, but will still be allowed to have only ONE channel being applied at a time.
 define("MAX_CONCURRENT_SUPPORTS",10);	// amount of applications a username can support at a given time
-define("MIN_DAYS_BEFORE_REG",1);		// minimum probation period (in days) for a new username to be a new channel applicant
-define("MIN_DAYS_BEFORE_SUPPORT",1);	// minimum probation period (in days) for a new username to be a new channel supporter
-define("MIN_DAYS_BEFORE_TMGR",1);		// minimum probation period (in days) for a new username to be a temporary manager (manager change)
-define("MIN_DAYS_BEFORE_PMGR",1);		// minimum probation period (in days) for a new username to be a permanent manager (manager change)
+define("MIN_DAYS_BEFORE_REG",0);		// minimum probation period (in days) for a new username to be a new channel applicant
+define("MIN_DAYS_BEFORE_SUPPORT",0);	// minimum probation period (in days) for a new username to be a new channel supporter
+define("MIN_DAYS_BEFORE_TMGR",0);		// minimum probation period (in days) for a new username to be a temporary manager (manager change)
+define("MIN_DAYS_BEFORE_PMGR",0);		// minimum probation period (in days) for a new username to be a permanent manager (manager change)
 
-define("DEFAULT_REQUIRED_SUPPORTERS",3); // this option defines number of default required supporters (see below).
+define("DEFAULT_REQUIRED_SUPPORTERS",0); // this option defines number of default required supporters (see below).
 
-define("MOD_VA_LEVEL", 751); // Set level allowed to modify a users Verification Answer
+define("MOD_VA_LEVEL",751); // Set level allowed to modify a users Verification Answer
 /*
 Current feature of REQUIRED_SUPPORTERS :
 		0	set it to 0 to allow instant registration (no supporters)	[VERY SMALL NETWORKS]
@@ -219,8 +219,8 @@ This requires to login with a user with an admin access of 901 or above (coder l
 
 
 
-define("GLINE_CHECK", 0);  // Enable gline check for new user registration
-define("RBL_CHECKS", 0);		// enable RBL check for new user registration.
+define("GLINE_CHECK",0);  // Enable gline check for new user registration
+define("RBL_CHECKS",0);		// enable RBL check for new user registration.
 define("TOTP_USR_FLAG",1024);
 define("TOTP_ADMIN_IPR_FLAG", 2048);
 define("NON_BOGUS_TOTP",'/^[0-9\=]+$/');
@@ -228,45 +228,44 @@ define("TOTP_ON",0);		// enable TOTP checks on login.
 // define(TOTP_VIEW,1);            // define if TOTP key is viewabled by CSA's
 // define(TOTP_VIEW_LVL,800);	// define minimum access level to view TOTP key
 define("TOTP_RESET_LVL",800);	// define minimum access level to reset TOTP key
-define("TOTP_SALT", '0123456789');	// salt for TOTP cookie md5hash
+define("TOTP_SALT",'0123456789');	// salt for TOTP cookie md5hash
 define("TOTP_CONFIRM_INT", 21600);// seconds for confirmation link validity
-define("TOTP_PATH", 'totp/');	// path to totp help, activation and confirmation files relative to /live pages
-define("SHOW_TOTP_PUBLIC", 0);	// Allow regulars to see if OTHER user has TOTP on/off
-define("TOTP_ALLOW_ALL", 1);	// Allow regulars (1) or just opers/*'s to enable TOTP
-define ("TOTP_DEBUG", 0);		// trun on/off  totp debuging
-define ("TOTP_ALLOW_SELF_OFF", 1);	// allow regulars to disable TOTP on their own
-define("USRNREG_CHANS", "");		// define channels ID list for wich usernames to be checked against new username registration for similarity. 1= *, 8656 = #cservice. Use: select id from channels where name='#desired_channel_name'; from psql console to get channel ID
-define("USRNREG_EUSERS", '');		//define list of usernames not added to channels above, but still look for similarity with new username reg (ex/active opers, ex/deleted CSA's, etc)
-define("USRNREG_WARN_ENABLE", 1);			//enable (1) or disable (0) similarity check for new usernames registration
-define("USRNREG_DIST", 4);	// how many letters need to be changed/added/removed to get from username1 to username2
-define("USRNREG_SIMILAR", 75);	// How simmilar username1 needs to be to username2 to trigger response
-define("USRNREG_ERR_MSG", "<li>Sorry, that username is unavailable [likeness]. Please contact cservice-abuse@undernet.org for more information.\n"); // Error message when username is too similar
-define("WARN_EXPIRE_SESSION", 1); // warn *'s when web session is about to expire due to inactivity
-define("WARN_EXP_SESS_GRACE", 300); // warn with xx seconds before websession becomes invalid
-define("DEFAULT_SESS_TIMEOUT", array(900, 1800, 3600, 5400, 7200));
-define("WARN_SESS_DEFAULTS", DEFAULT_SESS_TIMEOUT);
-define("WARN_EXP_SESS_HOME", "http://testnet.yournetwork.org/live/"); // location when logging out from warning popup
-define("BIND_OUT_IP", '10.0.0.1');
+define("TOTP_PATH",'totp/');	// path to totp help, activation and confirmation files relative to /live pages
+define("SHOW_TOTP_PUBLIC",0);	// Allow regulars to see if OTHER user has TOTP on/off
+define("TOTP_ALLOW_ALL",1);	// Allow regulars (1) or just opers/*'s to enable TOTP
+define("TOTP_DEBUG",0);		// trun on/off  totp debuging
+define("TOTP_ALLOW_SELF_OFF", 1);	// allow regulars to disable TOTP on their own
+define("USRNREG_CHANS","");		// define channels ID list for wich usernames to be checked against new username registration for similarity. 1= *, 8656 = #cservice. Use: select id from channels where name='#desired_channel_name'; from psql console to get channel ID
+define("USRNREG_EUSERS",'');		//define list of usernames not added to channels above, but still look for similarity with new username reg (ex/active opers, ex/deleted CSA's, etc)
+define("USRNREG_WARN_ENABLE",1);			//enable (1) or disable (0) similarity check for new usernames registration
+define("USRNREG_DIST",4);	// how many letters need to be changed/added/removed to get from username1 to username2
+define("USRNREG_SIMILAR",75);	// How simmilar username1 needs to be to username2 to trigger response
+define("USRNREG_ERR_MSG","<li>Sorry, that username is unavailable [likeness]. Please contact cservice-abuse@undernet.org for more information.\n"); // Error message when username is too similar
+define("WARN_EXPIRE_SESSION",1); // warn *'s when web session is about to expire due to inactivity
+define("WARN_EXP_SESS_GRACE",300); // warn with xx seconds before websession becomes invalid
+define("DEFAULT_SESS_TIMEOUT",array(900,1800,3600,5400,7200));
+define("WARN_SESS_DEFAULTS",DEFAULT_SESS_TIMEOUT);
+define("WARN_EXP_SESS_HOME","http://192.168.254.106/gnuworld/"); // location when logging out from warning popup
+define("BIND_OUT_IP",'10.0.0.1');
 
-define("SMTP_HOST", '');
-define("SMTP_PORT", '25');
-define("SMTP_USER", '');
-define("SMTP_PASS", '');
-define("MAIL_TYPE", 'sendmail');	// set to smtp or sendmail
-define("DEBUG_MAIL", false);
-define("ALLOW_SELF_MAXLOGINS", 1);	// 0 - disallow regulars to change own maxlogins, 1- allow
-define("DEFAULT_MAX_LOGINS", 1); // Set the number of default max logins allowed for a newly registered user
-define("ALLOW_MAX_LOGINS", array(
+define("SMTP_HOST",'');
+define("SMTP_PORT",'25');
+define("SMTP_USER",'');
+define("SMTP_PASS",'');
+define("MAIL_TYPE",'sendmail');	// set to smtp or sendmail
+define("DEBUG_MAIL",false);
+define("ALLOW_SELF_MAXLOGINS",1);	// 0 - disallow regulars to change own maxlogins, 1- allow
+define("DEFAULT_MAX_LOGINS",1); // Set the number of default max logins allowed for a newly registered user
+define("ALLOW_MAX_LOGINS",array(
 	['max_logins' => 2, 'account_age' => 172800],
 	['max_logins' => 3, 'account_age' => 259200],
 ));
-define("ALLOW_MULTI_CHANS", array(
+define("ALLOW_MULTI_CHANS",array(
 	"1" => 86400,  // first channel after 1 day
 	"2" => 172800, // minimum time since added as 500 in 1-st channel, to allow second reg
 	"3" => 259200  // minimum time since added as 500 in 2-nd channel, to allow third reg
 ));
-define("IPR_EXPIRY", array(3600, 10800, 21600, 86400, 259200, 518400, 1296000, 2592000, 7776000, 15552000, 31536000, 0));
+define("IPR_EXPIRY",array(3600,10800,21600,86400,259200,518400,1296000,2592000,7776000,15552000,31536000,0));
 
 /* To show you read this whole file, please comment or remove the next line. */
-die("<h2><b>Error</b>: Edit website/php_includes/config.inc file !</h2>");
 ?>
