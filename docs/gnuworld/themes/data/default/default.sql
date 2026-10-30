@@ -12,34 +12,34 @@ INSERT INTO themes VALUES (
 'default',
 
 -- left
-'60659c',
+'456395',
 '',
 '000000',
-'aaaaaa',
-'ffffff',
+'e1e1e1',
+'ffff00',
 
 'aaaaaa',
 '000000',
 'ffff00',
 
 -- top
-'60659c',
+'456395',
 '',
 'default_logo.jpg',
 
 -- bottom (footer)
-'60659c',
+'456395',
 '',
-'000000',
-'aaaaaa',
 'ffffff',
+'ccccff',
+'ff1111',
 
 -- main
-'aaafe4',
+'f0f0f0',
 '',
 '000000',
 '505050',
-'60659c',
+'004400',
 'ff7700',
 'ff0000',
 
@@ -47,7 +47,7 @@ INSERT INTO themes VALUES (
 '009900',
 
 -- main/regproc
-'ffff00',
+'f0f0f0',
 '0000ff',
 '0000ff',
 '00ff00',
@@ -56,7 +56,7 @@ INSERT INTO themes VALUES (
 '990099',
 'ff0000',
 
-'60659c',
+'004400',
 
 '00ff00',
 'ff0000',
@@ -74,13 +74,13 @@ INSERT INTO themes VALUES (
 -- tables
 'ffffff',
 '',
-'60659c',
+'f0f0f0',
 'ffffff',
-'dddddd',
-'4c4c4c',
+'003366',
+'ffffff',
 'ffff00',
 '777777',
-'60659c',
+'f0f0f0',
 ''
 
 );
