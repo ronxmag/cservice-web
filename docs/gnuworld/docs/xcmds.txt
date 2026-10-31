@@ -1,6 +1,6 @@
 *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*
 
-                      Undernet Channel Service Committee
+                      UnderX Channel Service Committee
                             CMaster Command List
                           Updated: February 03, 2006
 *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=*
@@ -32,14 +32,14 @@ NOTES regarding SYNTAX and PARAMETERS:
   - For example, both the ACCESS and LBANLIST commands accept <pattern>:
 
     /msg x access <#channel> ?irc*
-    /msg x lbanlist <#channel> *.users.undernet.org
+    /msg x lbanlist <#channel> *.users.underx.org
 
   - The ACCESS command would return any usernames on the channel who matched the ?irc* wildcard string.
-  - The LBANLIST command would return all bans set for users who had enabled Undernet's virtual hostmask (usermode +x).
+  - The LBANLIST command would return all bans set for users who had enabled UnderX's virtual hostmask (usermode +x).
 
 NOTE for SCRIPTERS:
 
-* IRC scripts should always use /msg x@channels.undernet.org for all 
+* IRC scripts should always use /msg x@channels.underx.org for all 
   commands, not just LOGIN, to ensure the command gets sent to X in the 
   event of a temporary nick change for X or other unforeseen circumstances
   which could render your script temporarily unusable.
@@ -165,7 +165,7 @@ NOTE for SCRIPTERS:
        /msg X set <#channel> mode
 
   URL - You can state the channel's web site URL(s) with this option (75 characters max). 
-      - The URL can be viewed in the CHANINFO reply or by logging into http://cservice.undernet.org/live/ then
+      - The URL can be viewed in the CHANINFO reply or by logging into http://cservice.underx.org/live/ then
         clicking "Channel Information" and submitting the channel name.
       - If no URL is specified, the current URL setting is cleared.
 
@@ -298,7 +298,7 @@ NOTE for SCRIPTERS:
       -  The ban reason can be a maximum of 128 characters. 
       -  If no duration and/or level is specified, the default will be a duration of 3 hours at level 75.
 
-  NOTE: If the banned user has Undernet's "virtual hostmask" (user mode +x) enabled, X is able to see through it to 
+  NOTE: If the banned user has UnderX's "virtual hostmask" (user mode +x) enabled, X is able to see through it to 
         their actual host, so banning their username via *!*@username.* will also ban their actual host.
 
        * Ban Levels:   1-74 = Prevents the user from having ops (+o) on the channel.
@@ -369,7 +369,7 @@ NOTE for SCRIPTERS:
   ACCESS - Looks up access information for a certain user via nick or username, or multiple users via wildcard pattern. 
          - The information displayed is: access level, automode if applicable, suspension status and level if suspended, 
            and when the user was last seen. 
-         - If there are more than 15 results, log into http://cservice.undernet.org/live/ to see the entire list 
+         - If there are more than 15 results, log into http://cservice.underx.org/live/ to see the entire list 
            by clicking on the "Channel Information" link and submitting the channel name. 
          - You can also combine these options to get specific results.
 
@@ -429,7 +429,7 @@ NOTE for SCRIPTERS:
 
   LBANLIST - Searches X's banlist for the specified string. Use * to see the whole list, or specify a wildcard pattern 
              to find specific bans. 
-           - If there are more than 15 results, log into http://cservice.undernet.org/live/ to see the entire list 
+           - If there are more than 15 results, log into http://cservice.underx.org/live/ to see the entire list 
              by clicking on the "Channel Information" link and submitting the channel name.
 
        /msg x lbanlist <#channel> <pattern>
@@ -444,16 +444,16 @@ NOTE for SCRIPTERS:
          *** Remember: No one from CService will ever ask you for your password!  
                        Do NOT give out your password to anyone claiming to be CService!
 
-       /msg x@channels.undernet.org login <username> <password>
+       /msg x@channels.underx.org login <username> <password>
 
   NOTE : - You can hide your real IP with /mode nickname-here +x
-         +x is a user mode which enables Undernet's "Virtual Hostmask," which will mask your true host/IP address with 
-         <your_username>.users.undernet.org.
+         +x is a user mode which enables UnderX's "Virtual Hostmask," which will mask your true host/IP address with 
+         <your_username>.users.underx.org.
          - Other users will see this virtual hostmask instead of your actual host/IP address.  
          - CService Admin and IRC Operators can see through +x, as can X.
          - You will always be able to see your true host/IP, of course.
-         - Unlike the virtual hostmask mode that some other IRC networks use, Undernet�s cannot be unset; 
-           the user must disconnect from Undernet to disable it.
+         - Unlike the virtual hostmask mode that some other IRC networks use, UnderX�s cannot be unset; 
+           the user must disconnect from UnderX to disable it.
 
 
   MOTD - Displays X's "Message of the Day."
@@ -532,9 +532,6 @@ NOTE for SCRIPTERS:
        /msg X verify <nick>
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  This document was last updated on February 03, 2006 - by KoGiTo
-  This file is maintained by Undernet CService Committee
-  E-mail cservice@undernet.org with any suggestions or comments
-  CService URL: http://cservice.undernet.org
-  Undernet URL: http://www.undernet.org
+  This document was last updated on October 31, 2006 - by DecrypteD
+  This file is maintained by UnderX CService Committee
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
